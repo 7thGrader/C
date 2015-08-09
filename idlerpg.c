@@ -30,13 +30,18 @@ void main() {
 	printf("\a");
 	fflush(stdin);
 	printf("\nDo you need help?(Y/N)\n");
+	wrong:
 	input = getch();
 	printf("\a");
 	fflush(stdin);
-	system("cls");
 	if(input=='y'||input=='Y') {
+		system("cls");
 		help();
 	}
+	else if(input!='n'&&input!='N') {
+		goto wrong;
+	}
+	system("cls");
 	for(;;) {
 		printf("IDLE RPG v1.1\n");
 		printf("=========== Status ===========\n");

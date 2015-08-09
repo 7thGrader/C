@@ -8,6 +8,7 @@ void help() {
 	printf("This program is made with C.\n");
 	printf("\nPress Any Key to continue.\n");
 	getch();
+	printf("\a");
 	system("cls");
 }
 void main() {
@@ -21,21 +22,23 @@ void main() {
 	system("cls");
 	printf("======================\n");
 	printf("     I D L E\n");
-	printf("         R P G    v1.0\n");
+	printf("         R P G    v1.1\n");
 	printf("======================\n");
 	printf("\n");
 	printf("  * Press Any Key *\n");
 	getch();
+	printf("\a");
 	fflush(stdin);
 	printf("\nDo you need help?(Y/N)\n");
 	input = getch();
+	printf("\a");
 	fflush(stdin);
 	system("cls");
 	if(input=='y'||input=='Y') {
 		help();
 	}
 	for(;;) {
-		printf("IDLE RPG v1.0\n");
+		printf("IDLE RPG v1.1\n");
 		printf("=========== Status ===========\n");
 		printf("Money : %d, Level : %d, ATK : %d, EXP : %d\n",(int)money,level,(int)atk,(int)exp);
 		printf("Progress : %d%%\n",(progress*100)/(level*level+4));
@@ -46,6 +49,7 @@ void main() {
 			progress = 0;
 			money += (double)level;
 			printf("Progress COMPLETE!\n");
+			printf("\a");
 		}
 		if(exp>=level*level*5) {
 			exp = 0;

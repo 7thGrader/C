@@ -7,7 +7,7 @@ _Bool tape[79];
 _Bool tmptape[79];
 void printtape() {
 	int tmp;
-	for(tmp=0;tmp<=79;tmp++) {
+	for(tmp=0;tmp<=78;tmp++) {
 		if(tape[tmp]==1) {
 			printf("*");
 		}
@@ -22,7 +22,7 @@ void check(int tmp) {
 		}
 		else tmptape[tmp]=0;
 	}
-	else if(tmp==79) {
+	else if(tmp==78) {
 		if((q)%2 == 1) {
 			tmptape[tmp]=1;
 		}
@@ -37,29 +37,43 @@ void check(int tmp) {
 }
 void rule110() {
 	int tmp;
-	for(tmp=0;tmp<=79;tmp++) {
+	for(tmp=0;tmp<=78;tmp++) {
 		tmptape[tmp]=tape[tmp];
 	}
-	for(tmp=0;tmp<=79;tmp++) {
+	for(tmp=0;tmp<=78;tmp++) {
 		check(tmp);
 	}
-	for(tmp=0;tmp<=79;tmp++) {
+	for(tmp=0;tmp<=78;tmp++) {
 		tape[tmp]=tmptape[tmp];
 	}
 }
 void main() {
-	int i;
-	for(i=0;i<=79;i++) {
-		tape[i] = 0;
+	int i,useless;
+	for(i=0;i<=78;i++) {
+		printf("Tape cell %d : ",i);
+		scanf("%d",&useless);
+		tape[i] = useless;
 	}
-	tape[79]=1;
-	while(tape[0]==0) {
+	tape[78]=1;
+	do {
 		printtape();
 		rule110();
 		getch();
+		printf("\a");
+	} while(tape[0]==0);
+	printf("\nEND OF TAPE REACHED\nType 0 to stop. else continue : ");
+	scanf("%d",&useless);
+	if(useless==0) {
+		for(;;) {
+			sleep(1);
+		}
 	}
-	printf("END OF TAPE REACHED");
-	for(;;) {
-		sleep(1);
+	else {
+		while(1) {
+			printtape();
+			rule110();
+			getch();
+			printf("\a");
+		}
 	}
 }
